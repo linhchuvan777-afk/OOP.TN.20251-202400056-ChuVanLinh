@@ -4,34 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompactDisc {
+public class CompactDisc extends Disc {
 
-    private static int nbCompactDiscs = 0;
+    private List<String> artists;
+    private List<String> directors;
+    private List<Track> tracks;
 
-    private final int id;
-    private final String title;
-    private final String category;
-    private final double cost;
-    private final List<String> artists;
-    private final List<String> directors;
-    private final List<Track> tracks;
-
-    public CompactDisc(String title, String category, double cost,
+    public CompactDisc(String title, double cost, String category,
                        String[] artists, String[] directors, Track[] tracks) {
-        this.id = ++nbCompactDiscs;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        super(title, cost, category); // gọi Disc → Media
         this.artists = new ArrayList<>(Arrays.asList(artists));
         this.directors = new ArrayList<>(Arrays.asList(directors));
         this.tracks = new ArrayList<>(Arrays.asList(tracks));
     }
 
     // Getters
-    public int getId() { return id; }
-    public String getTitle() { return title; }
-    public String getCategory() { return category; }
-    public double getCost() { return cost; }
     public List<String> getArtists() { return new ArrayList<>(artists); }
     public List<String> getDirectors() { return new ArrayList<>(directors); }
     public List<Track> getTracks() { return new ArrayList<>(tracks); }
@@ -48,9 +35,13 @@ public class CompactDisc {
 
     @Override
     public String toString() {
-        return "CompactDisc[" + id + "][" + title + "][" + cost + "][" + category + "]"
+        StringBuilder trackList = new StringBuilder();
+        for (Track t : tracks) {
+            trackList.append(t).append("\n");
+        }
+        return "CompactDisc[" + getId() + "][" + getTitle() + "][" + getCost() + "][" + getCategory() + "]"
                 + "\nArtists: " + artists
                 + "\nDirectors: " + directors
-                + "\nTracks: " + tracks;
+                + "\nTracks:\n" + trackList;
     }
 }
