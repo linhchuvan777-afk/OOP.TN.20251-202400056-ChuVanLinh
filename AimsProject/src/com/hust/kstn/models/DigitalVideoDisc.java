@@ -70,4 +70,14 @@ public class DigitalVideoDisc
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "DVD" + "[" + this.id + "] - "
+                + "[" + this.title + "] - "
+                + "[" + this.cost + "] - "
+                + "[" + this.length + "] - "
+                + "[" + this.category + "] - "
+                + "[" + this.director + "]";
+    }
+
 }
