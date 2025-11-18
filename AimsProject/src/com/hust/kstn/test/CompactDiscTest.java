@@ -14,7 +14,7 @@ public class CompactDiscTest {
         Track track4 = new Track("Rabbit", 185);
 
         Track[] tracks = {track1, track2};
-        CompactDisc cd = new CompactDisc("Dragon", "KPop", 12, artists, directors, tracks);
+        CompactDisc cd = new CompactDisc("Dragon", 12, "Kpop", artists, directors, tracks);
         System.out.println(cd);
 
         cd.addTrack(track3);
